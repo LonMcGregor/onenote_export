@@ -218,7 +218,7 @@ def download_page(graph_client, page_url, path, indent=0):
         indent_print(indent, 'HTML file already exists; skipping this page')
         return
     path.mkdir(parents=True, exist_ok=True)
-    response = get(graph_client, page_url, indent=indent)
+    response = get(graph_client, page_url+"?includeInkML=true", indent=indent)
     if response is not None:
         content = response.text
         indent_print(indent, f'Got content of length {len(content)}')
